@@ -20,6 +20,7 @@
 #include "storage/checksum.h"
 #include "utils/memdebug.h"
 #include "utils/memutils.h"
+#include "utils/elog.h"
 
 
 /* GUC variable */
@@ -40,6 +41,9 @@ bool		ignore_checksum_failure = false;
 void
 PageInit(Page page, Size pageSize, Size specialSize)
 {
+	ereport(DEBUG1,
+			(errmsg("hi, this is page init")));
+
 	PageHeader	p = (PageHeader) page;
 
 	specialSize = MAXALIGN(specialSize);
