@@ -1,4 +1,15 @@
+# idea
+*.idea
+cmake-build-debug
+CMakeLists.txt
+
+
 # Global excludes across all subdirectories
+
+# Prerequisites
+*.d
+
+# Object files
 *.o
 *.obj
 *.so
