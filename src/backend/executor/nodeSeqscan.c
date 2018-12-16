@@ -31,6 +31,7 @@
 #include "executor/execdebug.h"
 #include "executor/nodeSeqscan.h"
 #include "utils/rel.h"
+#include "utils/elog.h"
 
 static void InitScanRelation(SeqScanState *node, EState *estate, int eflags);
 static TupleTableSlot *SeqNext(SeqScanState *node);
@@ -166,6 +167,8 @@ SeqScanState *
 ExecInitSeqScan(SeqScan *node, EState *estate, int eflags)
 {
 	SeqScanState *scanstate;
+
+	ereport(DEBUG1, (errmsg("in ExecInitSeqScan")));
 
 	/*
 	 * Once upon a time it was possible to have an outerPlan of a SeqScan, but
