@@ -76,6 +76,7 @@
 #include "utils/timeout.h"
 #include "utils/timestamp.h"
 #include "mb/pg_wchar.h"
+#include "utils/elog.h"
 
 
 /* ----------------
@@ -909,6 +910,7 @@ exec_simple_query(const char *query_string)
 	bool		isTopLevel;
 	char		msec_str[32];
 
+	ereport(DEBUG1, (errmsg("executing a simple query")));
 
 	/*
 	 * Report query to various monitoring facilities.
